@@ -1,4 +1,4 @@
-# api-diff
+# rifft
 
 A fast CLI tool that compares two OpenAPI 3.x specs and tells you exactly what changed — and whether it will break your consumers.
 
@@ -18,15 +18,15 @@ Summary: 3 breaking, 1 warning, 2 non-breaking
 ## Install
 
 ```bash
-go install github.com/theakinwande/api-diff/cmd@latest
+go install github.com/theakinwande/rifft/cmd@latest
 ```
 
 Or build from source:
 
 ```bash
-git clone https://github.com/theakinwande/api-diff
-cd api-diff
-go build -o api-diff ./cmd/main.go
+git clone https://github.com/theakinwande/rifft
+cd rifft
+go build -o rifft ./cmd/main.go
 ```
 
 ---
@@ -35,16 +35,16 @@ go build -o api-diff ./cmd/main.go
 
 ```bash
 # Compare two local spec files
-api-diff v1.yaml v2.yaml
+rifft v1.yaml v2.yaml
 
 # Compare from URLs
-api-diff https://api.example.com/v1/openapi.yaml https://api.example.com/v2/openapi.yaml
+rifft https://api.example.com/v1/openapi.yaml https://api.example.com/v2/openapi.yaml
 
 # Output as JSON
-api-diff v1.yaml v2.yaml --format json
+rifft v1.yaml v2.yaml --format json
 
 # Exit with code 1 if any breaking changes are found (useful for CI)
-api-diff v1.yaml v2.yaml --fail-on-breaking
+rifft v1.yaml v2.yaml --fail-on-breaking
 ```
 
 ---
@@ -69,7 +69,7 @@ api-diff v1.yaml v2.yaml --fail-on-breaking
 ## JSON Output
 
 ```bash
-api-diff v1.yaml v2.yaml --format json
+rifft v1.yaml v2.yaml --format json
 ```
 
 ```json
@@ -98,7 +98,7 @@ api-diff v1.yaml v2.yaml --format json
 Add this to your workflow to block PRs that introduce breaking API changes:
 
 ```yaml
-# .github/workflows/api-diff.yml
+# .github/workflows/rifft.yml
 name: API Contract Check
 
 on:
@@ -107,7 +107,7 @@ on:
       - 'specs/**'
 
 jobs:
-  api-diff:
+  rifft:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -116,11 +116,11 @@ jobs:
         with:
           go-version: '1.21'
 
-      - name: Install api-diff
-        run: go install github.com/theakinwande/api-diff/cmd@latest
+      - name: Install rifft
+        run: go install github.com/theakinwande/rifft/cmd@latest
 
       - name: Check for breaking changes
-        run: api-diff specs/openapi-base.yaml specs/openapi.yaml --fail-on-breaking
+        run: rifft specs/openapi-base.yaml specs/openapi.yaml --fail-on-breaking
 ```
 
 ---
@@ -138,7 +138,7 @@ go test ./...
 ## Project Structure
 
 ```
-api-diff/
+rifft/
 ├── cmd/main.go              # CLI entrypoint (Cobra)
 ├── parser/openapi.go        # Loads specs from files or URLs
 ├── differ/diff.go           # Core change detection engine

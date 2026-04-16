@@ -1,0 +1,25 @@
+name: rifft
+
+on:
+  pull_request:
+    paths:
+      - 'specs/**'
+  workflow_dispatch:
+
+jobs:
+  api-contract-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.21'
+          cache: true
+
+      - name: Build rifft
+        run: go build -o rifft ./cmd/main.go
+
+      - name: Run API diff
+        run: ./rifft specs/openapi-base.yaml specs/openapi.yaml --fail-on-breaking
