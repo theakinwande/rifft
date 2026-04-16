@@ -1,0 +1,14 @@
+# Claude Code
+.claude/
+
+# Go binary
+api-diff
+api-diff.exe
+
+# Go build/test artifacts
+*.test
+*.out
+
+# OS files
+.DS_Store
+Thumbs.db
