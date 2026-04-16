@@ -5,9 +5,9 @@ import (
 	"os"
 
 	"github.com/spf13/cobra"
-	"github.com/theakinwande/api-diff/differ"
-	"github.com/theakinwande/api-diff/parser"
-	"github.com/theakinwande/api-diff/reporter"
+	"github.com/theakinwande/rifft/differ"
+	"github.com/theakinwande/rifft/parser"
+	"github.com/theakinwande/rifft/reporter"
 )
 
 func main() {
@@ -15,8 +15,8 @@ func main() {
 	var failOnBreaking bool
 
 	rootCmd := &cobra.Command{
-		Use:   "api-diff <old-spec> <new-spec>",
-		Short: "Compare two OpenAPI 3.x spec files and report breaking vs non-breaking changes",
+		Use:   "rifft <old-spec> <new-spec>",
+		Short: "rifft — compare two OpenAPI 3.x spec files and report breaking vs non-breaking changes",
 		Args:  cobra.ExactArgs(2),
 		RunE: func(cmd *cobra.Command, args []string) error {
 			oldPath := args[0]

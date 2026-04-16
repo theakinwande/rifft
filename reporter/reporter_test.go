@@ -6,7 +6,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/theakinwande/api-diff/differ"
+	"github.com/theakinwande/rifft/differ"
 )
 
 var testChanges = []differ.Change{

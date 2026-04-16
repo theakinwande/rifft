@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"io"
 
-	"github.com/theakinwande/api-diff/differ"
+	"github.com/theakinwande/rifft/differ"
 )
 
 type jsonReport struct {

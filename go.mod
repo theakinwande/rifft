@@ -1,4 +1,4 @@
-module github.com/theakinwande/api-diff
+module github.com/theakinwande/rifft
 
 go 1.25.3
 

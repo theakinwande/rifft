@@ -6,7 +6,7 @@ import (
 	"strings"
 
 	"github.com/fatih/color"
-	"github.com/theakinwande/api-diff/differ"
+	"github.com/theakinwande/rifft/differ"
 )
 
 // TextReport writes a human-readable report of changes to the writer.

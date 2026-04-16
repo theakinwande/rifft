@@ -2,8 +2,8 @@
 .claude/
 
 # Go binary
-api-diff
-api-diff.exe
+rifft
+rifft.exe
 
 # Go build/test artifacts
 *.test
